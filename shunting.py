@@ -37,7 +37,7 @@ while infix:
     elif c in prec:
         # Push any operators on the opers stack with higher prec to the output.
         while opers and prec[c] < prec[opers[-1]]:
-            postfix.append(opers.push())
+            postfix.append(opers.pop())
         # Push c to the operator stack.
         opers.append(c)
     else:

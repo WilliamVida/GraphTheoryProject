@@ -1,8 +1,10 @@
 # Thompsons construction
 # William Vida
 
+
 class State:
     """ A state with one or two edges, all edges labeled by label. """
+
     # Constrcutor.
     def __init__(self, label=None, edges=[]):
         # Every state has 0, 1, or 2 edges from it.
@@ -10,8 +12,10 @@ class State:
         # Label for the arrows. None means epsilon.
         self.label = label
 
+
 class Fragment:
     """ An NFA fragment with a start state and an accept state. """
+
     # Constructor.
     def __init__(self, start, accept):
         # Start state of NFA fragment.
@@ -22,7 +26,7 @@ class Fragment:
 
 def shunt(infix):
     """ Return the infix regular expression in postfix. """
-    
+
     # Convert input to a stack-ish list.
     infix = list(infix)[::-1]
 
@@ -88,9 +92,9 @@ def compile(infix):
             # Point frag2's accept state at frag1's start state.
             frag2.accept.edges.append(frag1.start)
             # The new start state is frag2's.
-            start=frag2.start
+            start = frag2.start
             # The new accept state is frag1's.
-            accept=frag1.accept
+            accept = frag1.accept
         elif c == '|':
             # Pop two fragments off the stack.
             frag1 = nfa_stack.pop()
@@ -114,7 +118,7 @@ def compile(infix):
             start = State(label=c, edges=[accept])
 
         # Create new instance of Fragment to represent the new NFA.
-        newfrag=Fragment(start,accept)
+        newfrag = Fragment(start, accept)
         # Push the new NFA to the NFA stack.
         nfa_stack.append(newfrag)
 
@@ -122,6 +126,8 @@ def compile(infix):
     return nfa_stack.pop()
 
 # Add a state to a set, and follow all of th e(epsilon) arrows.
+
+
 def follows(state, current):
     # Only do something when we haven't already seen the state.
     if state not in current:
@@ -132,7 +138,7 @@ def follows(state, current):
             # Loop through the states pointed to by this state.
             for x in state.edges:
                 # Follow all of their e(psilon)s too.
-                follows(x,current)
+                follows(x, current)
 
 
 def match(regex, s):
@@ -145,32 +151,33 @@ def match(regex, s):
     # Try to match the regular expression to the string s.
 
     # The current set of states.
-    current={nfa.start}
+    current = set()
     # Add the first stat, follow all e(psilon) arrows.
-    follows(nfa.start,current)
+    follows(nfa.start, current)
     # The previous set of states.
-    previous=set()
-    
+    previous = set()
+
     # Loop through characters in s.
     for c in s:
         # Keep track of where we were.
-        previous=current
+        previous = current
         # Create a new empty set for states we're about to be in.
-        current=set()
+        current = set()
         # Loop through the previous states.
-        for s in previous:
+        for state in previous:
             # Only follow arrows not labeled by e(psilon).
-            if s.label is not None:
+            if state.label is not None:
                 # If the label of the state is equal to the characters we've read:
-                if s.label==c:
+                if state.label == c:
                     # Add the state at the end of the arrow to current.
-                    follows(state.edges[0],current)
+                    follows(state.edges[0], current)
 
     # Ask the NFA if it matches the string s.
     return nfa.accept in current
 
-if __name__=="__main__":
-    tests= [
+
+if __name__ == "__main__":
+    tests = [
         ["a.b|b*", "bbbbbb", True],
         ["a.b|b*", "bbx", False],
         ["a.b", "ab", True],
@@ -179,7 +186,5 @@ if __name__=="__main__":
     ]
 
     for test in tests:
-        assert match(test[0],test[1])==test[2], test[0] + \
-        (" should match " if test[2] else " should not match ")+test[1]
-
-# print(match("a.b|b*", "bbbbbbbbbbbx"))
+        assert match(test[0], test[1]) == test[2], test[0] + \
+            (" should match " if test[2] else " should not match ")+test[1]
