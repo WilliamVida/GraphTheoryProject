@@ -17,8 +17,8 @@ Enter the project folder then enter the following command:
 #### Non-Deterministic Finite Automaton
 What is a non-deterministic finite automaton (NFA)?
 [Wikipedia](https://en.wikipedia.org/wiki/Nondeterministic_finite_automaton) desribes a non-deterministic finite automaton as a
-> In automata theory, a finite-state machine is called a deterministic finite automaton (DFA), if 
-each of its transitions is uniquely determined by its source state and input symbol,
+> finite-state machine is called a deterministic finite automaton (DFA), if  
+each of its transitions is uniquely determined by its source state and input symbol,  
 reading an input symbol is required for each state transition.
 
 ### Regular Expression
@@ -26,10 +26,10 @@ What is a regular expression?
 [Wikipedia](https://en.wikipedia.org/wiki/Regular_expression) describes a regular expression as a 
 > sequence of characters that define a search pattern. Usually such patterns are used by string searching algorithms for "find" or "find and replace" operations on strings, or for input validation. It is a technique developed in theoretical computer science and formal language theory. 
 
-An example of regular expression for [validating an email address](https://www.geeksforgeeks.org/write-regular-expressions/
+An example of a regular expression for [validating an email address](https://www.geeksforgeeks.org/write-regular-expressions/
 ) would be:
-``` ^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$ ```
-The string example@email.com would validate the regular expression above while example@@email.com and "example"@email.com would not.
+``` ^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$ ```\
+The string "example@email.com" would validate the regular expression above while the strings "example@@email.com" and "'example'@email.com" would not.
 
 ### Converting a Regular Expression to a Non-Deterministic Finite Automaton
 #### Thompson's construction
