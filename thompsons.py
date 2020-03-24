@@ -37,7 +37,7 @@ def shunt(infix):
     postfix = []
 
     # Operator precedence.
-    prec = {'*': 100, '.': 80, '|': 60, ')': 40, '(': 20}
+    prec = {'*': 100, '+' : 90,  '?' : 90, '.': 80, '|': 60, ')': 40, '(': 20}
 
     # Loop through the input one character at a time.
     while infix:
@@ -113,6 +113,22 @@ def compile(infix):
             start = State(edges=[frag.start, accept])
             # Point the arrows.
             frag.accept.edges = [frag.start, accept]
+        elif c == '+':
+            # Pop a single fragment off the stack.
+            frag = nfa_stack.pop()
+            # Create new start and accept states.
+            accept = State()
+            start.edges=accept
+            # Point the arrows.
+            frag.accept.edges = [frag.start, accept]
+        elif c == '?':
+            # Pop a single fragment off the stack.
+            frag = nfa_stack.pop()
+            # Create new start and accept states.
+            accept = State()
+            start = State(edges=[frag.start, accept])
+            # Point the arrows.
+            frag.accept.edges = [frag.start, accept]
         else:
             accept = State()
             start = State(label=c, edges=[accept])
@@ -142,7 +158,7 @@ def follows(state, current):
 
 
 def match(regex, s):
-    # This function will return Ttrue if and only if the regular expression
+    # This function will return True if and only if the regular expression
     # regex (fully) matches the string s. It returns false otherwise.
 
     # Compile the regular expression into an NFA.
