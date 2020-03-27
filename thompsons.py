@@ -3,12 +3,12 @@
 
 
 class State:
-    """ A state with one or two edges, all edges labeled by label. """
-
-    # Constrcutor.
-    def __init__(self, label=None, edges=[]):
+    """A state with one or two edges, all edges labelled by label."""
+    
+    # Constructor.
+    def __init__(self, label=None, edges=None):
         # Every state has 0, 1, or 2 edges from it.
-        self.edges = edges
+        self.edges = edges if edges else []
         # Label for the arrows. None means epsilon.
         self.label = label
 
