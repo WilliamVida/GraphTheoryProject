@@ -30,6 +30,39 @@ An example of a regular expression for [validating an email address](https://www
 The string "example@email.com" would validate the regular expression above while the strings "example@@email.com" and "'example'@email.com" would not.
 
 ### Converting a Regular Expression to a Non-Deterministic Finite Automaton
+#### Shunting-yard algorithm
+The [shunting-yard algorithm](https://en.wikipedia.org/wiki/Shunting-yard_algorithm) is a 
+> method for parsing mathematical expressions specified in infix notation. It can produce either a postfix notation string, also known as Reverse Polish notation (RPN), or an abstract syntax tree (AST). The algorithm was invented by Edsger Dijkstra and named the "shunting yard" algorithm because its operation resembles that of a railroad shunting yard.
+
+The [procedure used](https://brilliant.org/wiki/shunting-yard-algorithm/) is as follows:
+-   Expressions are parsed left to right.
+-   Each time a number or operand is read, we push it to the stack.
+-   Each time an operator comes up, we pop the required operands from the stack, perform the operations, and push the result back to the stack.
+-   We are finished when there are no tokens (numbers, operators, or any other mathematical symbol) to read. The final number on the stack is the result.
+
+To [build the algorithm](https://brilliant.org/wiki/shunting-yard-algorithm/), we will need
+
+- 1 stack for operations
+- 1 queue of the output
+- 1 array (or other list) of tokens.
+
+A pseudocode of the algorithm is as follows:
+```
+While there are tokens to be read:
+	Read a token
+	If it's a number add it to queue
+	If it's an operator
+		While there's an operator on the top of the stack with greater precedence:
+			Pop operators from the stack onto the output queue
+		Push the current operator onto the stack
+	If it's a left bracket push it onto the stack
+	If it's a right bracket 
+		While there's not a left bracket at the top of the stack:
+			Pop operators from the stack onto the output queue.
+		Pop the left bracket from the stack and discard it
+While there are operators on the stack, pop them to the queue
+```
+
 #### Thompson's construction
 [Thompson's construction](https://en.wikipedia.org/wiki/Thompson%27s_construction) is a
 > method of transforming a regular expression into an equivalent nondeterministic finite automaton (NFA). This NFA can be used to match strings against the regular expression. This algorithm is credited to Ken Thompson.
@@ -37,19 +70,20 @@ The string "example@email.com" would validate the regular expression above while
 ##### Operators
 #####  "."
 The [full stop](http://www.emerson.emory.edu/services/editors/ne/Regular_Expressions.html) is a special character that matches anything except a newline. Using concatenation, we can make regular expressions like `a.b` which matches any three-character string which begins with "a" and ends with "b".
+![full stop](https://swtch.com/~rsc/regexp/fig15.png)
 
 #####  "|"
 The [vertical bar](http://www.emerson.emory.edu/services/editors/ne/Regular_Expressions.html) specifies an alternative. Two regular expressions a and b with "|" in between (`a|b`) form an expression that matches anything that either a or b will match. Thus, `foo|bar` matches either "foo" or "bar" but no other string. "|" applies to the largest possible surrounding expressions. Only a surrounding "( ... )" grouping can limit the grouping power of "|".
+![vertical bar](https://swtch.com/~rsc/regexp/fig16.png )
 
 ##### "*"
 The [asterisk](https://en.wikipedia.org/wiki/Regular_expression) indicates  _zero or more_  occurrences of the preceding element. For example,  `ab*c`  matches "ac", "abc", "abbc", "abbbc", and so on.
+![asterisk](https://swtch.com/~rsc/regexp/fig18.png)
 
 ##### "+"
 The [plus sign](https://en.wikipedia.org/wiki/Regular_expression) indicates  _one or more_  occurrences of the preceding element. For example,  `ab+c`  matches "abc", "abbc", "abbbc", and so on, but not "ac".
+![plus sign](https://swtch.com/~rsc/regexp/fig19.png)
 
 ##### "?"
 The [question mark](https://en.wikipedia.org/wiki/Regular_expression) indicates _zero or one_ occurrences of the preceding element. For example, `colou?r` matches both "color" and "colour".
-
-#### Shunting-yard algorithm
-The [shunting-yard algorithm](https://en.wikipedia.org/wiki/Shunting-yard_algorithm) is a 
-> method for parsing mathematical expressions specified in infix notation. It can produce either a postfix notation string, also known as Reverse Polish notation (RPN), or an abstract syntax tree (AST). The algorithm was invented by Edsger Dijkstra and named the "shunting yard" algorithm because its operation resembles that of a railroad shunting yard.
+![question mark](https://swtch.com/~rsc/regexp/fig17.png)

@@ -118,7 +118,7 @@ def compile(infix):
             frag = nfa_stack.pop()
             # Create new start and accept states.
             accept = State()
-            start.edges=accept
+            start = State(edges=[frag.start, start])
             # Point the arrows.
             frag.accept.edges = [frag.start, accept]
         elif c == '?':
@@ -128,7 +128,7 @@ def compile(infix):
             accept = State()
             start = State(edges=[frag.start, accept])
             # Point the arrows.
-            frag.accept.edges = [frag.start, accept]
+            frag.accept.edges.append(accept)
         else:
             accept = State()
             start = State(label=c, edges=[accept])
@@ -141,10 +141,8 @@ def compile(infix):
     # The NFA stack should have exactly one NFA in it.
     return nfa_stack.pop()
 
-# Add a state to a set, and follow all of th e(epsilon) arrows.
-
-
-def follows(state, current):
+# Add a state to a set, and follow all of the e(psilon) arrows.
+def followes(state, current):
     # Only do something when we haven't already seen the state.
     if state not in current:
         # Put the state itself into current.
@@ -154,7 +152,7 @@ def follows(state, current):
             # Loop through the states pointed to by this state.
             for x in state.edges:
                 # Follow all of their e(psilon)s too.
-                follows(x, current)
+                followes(x, current)
 
 
 def match(regex, s):
@@ -169,7 +167,7 @@ def match(regex, s):
     # The current set of states.
     current = set()
     # Add the first stat, follow all e(psilon) arrows.
-    follows(nfa.start, current)
+    followes(nfa.start, current)
     # The previous set of states.
     previous = set()
 
@@ -186,7 +184,7 @@ def match(regex, s):
                 # If the label of the state is equal to the characters we've read:
                 if state.label == c:
                     # Add the state at the end of the arrow to current.
-                    follows(state.edges[0], current)
+                    followes(state.edges[0], current)
 
     # Ask the NFA if it matches the string s.
     return nfa.accept in current
