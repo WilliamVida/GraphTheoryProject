@@ -4,7 +4,7 @@
 
 class State:
     """A state with one or two edges, all edges labelled by label."""
-    
+
     # Constructor.
     def __init__(self, label=None, edges=None):
         # Every state has 0, 1, or 2 edges from it.
@@ -37,7 +37,7 @@ def shunt(infix):
     postfix = []
 
     # Operator precedence.
-    prec = {'*': 100, '+' : 90,  '?' : 90, '.': 80, '|': 60, ')': 40, '(': 20}
+    prec = {'*': 100, '+': 90,  '?': 90, '.': 80, '|': 60, ')': 40, '(': 20}
 
     # Loop through the input one character at a time.
     while infix:
@@ -120,7 +120,7 @@ def compile(infix):
             accept = State()
             start = State(edges=[frag.start, start])
             # Point the arrows.
-            frag.accept.edges = [frag.start, accept]
+            frag.accept.edges = [start, accept]
         elif c == '?':
             # Pop a single fragment off the stack.
             frag = nfa_stack.pop()
