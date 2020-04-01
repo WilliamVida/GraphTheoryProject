@@ -1,4 +1,6 @@
 # Graph Theory Project
+By William Vida
+Student ID: G00356773
 
 ## Problem Statement
 >You must write a program in the Python programming language that can build a non-deterministic finite automaton (NFA) from a regular expression, and can use the NFA to check if the regular expression matches any given string of text.
@@ -103,4 +105,3 @@ https://en.wikipedia.org/wiki/Thompson%27s_construction
 https://www.geeksforgeeks.org/write-regular-expressions/
 https://brilliant.org/wiki/shunting-yard-algorithm/
 http://www.emerson.emory.edu/services/editors/ne/Regular_Expressions.html
-https://swtch.com/~rsc/regexp/fig16.png
