@@ -1,5 +1,5 @@
 # Graph Theory Project
-By William Vida
+By William Vida <br/>
 Student ID: G00356773
 
 ## Problem Statement
@@ -89,19 +89,37 @@ The [plus sign](https://en.wikipedia.org/wiki/Regular_expression) indicates  _on
 The [question mark](https://en.wikipedia.org/wiki/Regular_expression) indicates _zero or one_ occurrences of the preceding element. For example, `colou?r` matches both "color" and "colour". <br/>
 ![question mark](https://swtch.com/~rsc/regexp/fig17.png)
 
+#### How the Code Works
+#### The State Class
+Every state has 0, 1, or 2 edges from it. Every edge has a label and none means epsilon.
+
+#### The Fragment Class
+NFA fragments have a start state and an accept state. The class has a constructor where the variables, start and accept, are associated with the current instance.
+
+#### The shunt Function
+The shunt function is based on the shunting-yard algorithm. The function takes an infix regular expression parameter and will return it in postfix. A dictionary of operators based on their precedence is declared. The infix is looped through a while loop checking if any operators are found, if an operator is found, then it is added to the stack. For example, if the infix "A * B + C" is entered then the postfix should be "A B * C +".
+
+#### The compile Function
+The compile function takes an infix parameter. The infix is then entered in the shunt function to return a postfix. A stack is declared for the NFAs. A while loop then goes through the postfix expression checking, using if and elif statements, if an operator (".", "|", "*", "+", "?") is found. For example, if "." or concatenation is found, two fragments will be popped off the stack, the first fragments' accept state will be pointed at the others start state, then the new start state is the second fragment while the new accept state is the first fragment.
+
+#### The followes Function
+The followes function adds a state to a set and follows all the epsilon arrows.
+
+#### The match Function
+The match function is used to check if the regular expression and the string match. It will return True if and only if the regular expression fully matches the string s. It returns false otherwise.
 
 #### Resources Used
-https://web.microsoftstream.com/video/f0a890b2-c28a-40d3-8175-adfb005260ed
-https://web.microsoftstream.com/video/a29536d4-e975-4172-a470-40b4fe28866e
-https://web.microsoftstream.com/video/781325b2-b4b9-461e-88cc-c5bf37e977eb
-https://web.microsoftstream.com/video/3be78704-8cc5-43f1-9be5-68b2e92c8d56
-https://web.microsoftstream.com/video/77e5ecd7-96c5-43ba-a11e-8399d44c87c9
-https://web.microsoftstream.com/video/f4bc3634-b94f-4c15-b2c1-70cccd874c54
-https://web.microsoftstream.com/video/dc439334-70cd-45b1-944b-af59c16f7d3a
-https://en.wikipedia.org/wiki/Nondeterministic_finite_automaton
-https://en.wikipedia.org/wiki/Shunting-yard_algorithm
-https://en.wikipedia.org/wiki/Regular_expression
-https://en.wikipedia.org/wiki/Thompson%27s_construction
-https://www.geeksforgeeks.org/write-regular-expressions/
-https://brilliant.org/wiki/shunting-yard-algorithm/
-http://www.emerson.emory.edu/services/editors/ne/Regular_Expressions.html
+https://web.microsoftstream.com/video/f0a890b2-c28a-40d3-8175-adfb005260ed <br/>
+https://web.microsoftstream.com/video/a29536d4-e975-4172-a470-40b4fe28866e <br/>
+https://web.microsoftstream.com/video/781325b2-b4b9-461e-88cc-c5bf37e977eb <br/>
+https://web.microsoftstream.com/video/3be78704-8cc5-43f1-9be5-68b2e92c8d56 <br/>
+https://web.microsoftstream.com/video/77e5ecd7-96c5-43ba-a11e-8399d44c87c9 <br/>
+https://web.microsoftstream.com/video/f4bc3634-b94f-4c15-b2c1-70cccd874c54 <br/>
+https://web.microsoftstream.com/video/dc439334-70cd-45b1-944b-af59c16f7d3a <br/>
+https://en.wikipedia.org/wiki/Nondeterministic_finite_automaton <br/>
+https://en.wikipedia.org/wiki/Shunting-yard_algorithm <br/>
+https://en.wikipedia.org/wiki/Regular_expression <br/>
+https://en.wikipedia.org/wiki/Thompson%27s_construction <br/>
+https://www.geeksforgeeks.org/write-regular-expressions/ <br/>
+https://brilliant.org/wiki/shunting-yard-algorithm/ <br/>
+http://www.emerson.emory.edu/services/editors/ne/Regular_Expressions.html <br/>

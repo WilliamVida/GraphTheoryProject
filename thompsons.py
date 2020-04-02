@@ -3,7 +3,7 @@
 
 
 class State:
-    """A state with one or two edges, all edges labelled by label."""
+    """ A state with one or two edges, all edges labelled by label. """
 
     # Constructor.
     def __init__(self, label=None, edges=None):
@@ -74,6 +74,7 @@ def shunt(infix):
 
 def compile(infix):
     """ Return an NFA Fragment representing the infix regular expression. """
+
     # Convert infix to postfix.
     postfix = shunt(infix)
     # Make postfix a stack of characters.
