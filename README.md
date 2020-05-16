@@ -9,7 +9,7 @@ Student ID: G00356773
 Clone the repository with:
 ``` git clone https://github.com/WilliamVida/GraphTheoryProject ```
 
-Enter the project folder and run the regextonfa.py file or enter the following command:
+Assuming Python is downloaded, enter the project folder and run the "regextonfa.py" file or enter the following command:
 ``` python regextonfa.py ```
 
 ## Research & Development

@@ -2,17 +2,23 @@ import thompsons
 
 
 def menu():
-    print("Enter regular expression")
-    inputRegex = input()
+    choice = ''
 
-    print("Enter string to compare")
-    inputString = input()
+    while choice != "-1":
+        print("Enter 1 to compare a regular expresion to a string")
+        print("Enter -1 to exit")
+        choice = input()
 
-    if thompsons.match(inputRegex, inputString) == True:
-        print("MATCH, the regular expression,", inputRegex,", and the string,", inputString,", entered are a match.")
+        if choice == "1":
+            print("Enter regular expression")
+            inputRegex = input()
 
-    else:
-        print("NO MATCH, the regular expression,", inputRegex,", and the string,", inputString,", entered do not match.")
+            print("Enter string to compare")
+            inputString = input()
 
+            if thompsons.match(inputRegex, inputString) == True:
+                print("MATCH, the regular expression,", inputRegex, ", and the string,", inputString, ", entered are a match.")
+            else:
+                print("NO MATCH, the regular expression,", inputRegex, ", and the string,", inputString, ", entered do not match.")
 
 menu()
