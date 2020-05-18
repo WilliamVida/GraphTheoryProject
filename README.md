@@ -136,7 +136,7 @@ https://web.microsoftstream.com/video/3be78704-8cc5-43f1-9be5-68b2e92c8d56 - A v
 https://web.microsoftstream.com/video/77e5ecd7-96c5-43ba-a11e-8399d44c87c9 - A video building fragments of automata using the construction. <br/>
 https://web.microsoftstream.com/video/f4bc3634-b94f-4c15-b2c1-70cccd874c54 - A video using the automaton to match strings. <br/>
 https://web.microsoftstream.com/video/dc439334-70cd-45b1-944b-af59c16f7d3a - A video on how to test and cleaning up Python code. <br/>
-All the videoes above were recorded by Dr Ian McLoughlin. Much of the code is based on the videos above. His lectures also helped me in understanding the concepts of this project. <br/>
+All the videos above were recorded by Dr Ian McLoughlin. Much of the code is based on the videos above. His lectures also helped me in understanding the concepts of this project. <br/>
 https://en.wikipedia.org/wiki/Nondeterministic_finite_automaton - This page is about NFAs. <br/>
 https://en.wikipedia.org/wiki/Shunting-yard_algorithm - This page is about the shunting yard algorithm. <br/>
 https://en.wikipedia.org/wiki/Regular_expression - This page is about regular expressions and its history, syntax and implementations. <br/>
