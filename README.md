@@ -1,5 +1,5 @@
 # Graph Theory Project
-By William Vida
+By William Vida <br/>
 Student ID: G00356773
 
 ## Problem Statement
@@ -136,7 +136,7 @@ https://web.microsoftstream.com/video/3be78704-8cc5-43f1-9be5-68b2e92c8d56 - A v
 https://web.microsoftstream.com/video/77e5ecd7-96c5-43ba-a11e-8399d44c87c9 - A video building fragments of automata using the construction. <br/>
 https://web.microsoftstream.com/video/f4bc3634-b94f-4c15-b2c1-70cccd874c54 - A video using the automaton to match strings. <br/>
 https://web.microsoftstream.com/video/dc439334-70cd-45b1-944b-af59c16f7d3a - A video on how to test and cleaning up Python code. <br/>
-All the video above were recorded by Dr Ian McLoughlin. Much of the code is based on the videos above. His lectures also helped me in understanding the concepts of this project.
+All the videoes above were recorded by Dr Ian McLoughlin. Much of the code is based on the videos above. His lectures also helped me in understanding the concepts of this project. <br/>
 https://en.wikipedia.org/wiki/Nondeterministic_finite_automaton - This page is about NFAs. <br/>
 https://en.wikipedia.org/wiki/Shunting-yard_algorithm - This page is about the shunting yard algorithm. <br/>
 https://en.wikipedia.org/wiki/Regular_expression - This page is about regular expressions and its history, syntax and implementations. <br/>
@@ -149,5 +149,5 @@ https://en.wikipedia.org/wiki/Infix_notation - This is a short Wikipedia page ab
 https://en.wikipedia.org/wiki/Reverse_Polish_notation - This is a Wikipedia page about postfix notation. It is a good place to start for research about postfix notation. It talks about its history, implementations and explains what postfix is. <br/>
 https://docs.python.org/3/library/unittest.html - This is the official documentation for the "unittest" framework which is always a good start for getting to know about a certain library, language, framework, etc. It was very useful for getting to know about the framework.<br/>
 https://www.youtube.com/watch?v=_0soBPejyu4 - This is a video introduction about the use of tests in Python using "unittest". <br/>
-https://docs.python.org/3/library/argparse.html  <br/> - Again this is the official documentation for the "argparse" library and it was very informative.
+https://docs.python.org/3/library/argparse.html - Again this is the official documentation for the "argparse" library and it was very informative. <br/>
 https://www.youtube.com/watch?v=cdblJqEUDNo - This a video going through an example using the "argparse" library. <br/>
