@@ -35,6 +35,12 @@ The string "example@email.com" would validate the regular expression above while
 The [shunting-yard algorithm](https://en.wikipedia.org/wiki/Shunting-yard_algorithm) is a 
 > method for parsing mathematical expressions specified in infix notation. It can produce either a postfix notation string, also known as Reverse Polish notation (RPN), or an abstract syntax tree (AST). The algorithm was invented by Edsger Dijkstra and named the "shunting yard" algorithm because its operation resembles that of a railroad shunting yard.
 
+[Infix](https://en.wikipedia.org/wiki/Infix_notation) is 
+> the notation commonly used in arithmetical and logical formulae and statements. It is characterized by the placement of operators between operands—"infixed operators"—such as the plus sign in 2 + 2.
+
+[Postfix](https://en.wikipedia.org/wiki/Reverse_Polish_notation) is a
+> mathematical notation in which operators follow their operands, in contrast to Polish notation (PN), in which operators precede their operands. It does not need any parentheses as long as each operator has a fixed number of operands.
+
 The [procedure used](https://brilliant.org/wiki/shunting-yard-algorithm/) is as follows:
 -   Expressions are parsed left to right.
 -   Each time a number or operand is read, we push it to the stack.
@@ -97,13 +103,13 @@ Every state has 0, 1, or 2 edges from it. Every edge has a label and none means 
 NFA fragments have a start state and an accept state. The class has a constructor where the variables, start and accept, are associated with the current instance.
 
 #### The shunt Function
-The shunt function is based on the shunting-yard algorithm. The function takes an infix regular expression parameter and will return it in postfix. A dictionary of operators based on their precedence is declared. The infix is looped through a while loop checking if any operators are found, if an operator is found, then it is added to the stack. For example, if the infix "A * B + C" is entered then the postfix should be "A B * C +".
+The "shunt" function is based on the shunting-yard algorithm. The function takes an infix regular expression parameter and will return it in postfix. A dictionary of operators based on their precedence is declared. The infix is looped through a while loop checking if any operators are found, if an operator is found, then it is added to the stack. For example, if the infix "A * B + C" is entered then the postfix should be "A B * C +".
 
 #### The compile Function
-The compile function takes an infix parameter. The infix is then entered in the shunt function to return a postfix. A stack is declared for the NFAs. A while loop then goes through the postfix expression checking, using if and elif statements, if an operator (".", "|", "*", "+", "?") is found. For example, if "." or concatenation is found, two fragments will be popped off the stack, the first fragments' accept state will be pointed at the others start state, then the new start state is the second fragment while the new accept state is the first fragment.
+The "compile" function takes an infix parameter. The infix is then entered in the "shunt" function to return a postfix. A stack is declared for the NFAs. A while loop then goes through the postfix expression checking, using if and elif statements, if an operator (".", "|", "*", "+", "?") is found. For example, if "." or concatenation is found, two fragments will be popped off the stack, the first fragments' accept state will be pointed at the others start state, then the new start state is the second fragment while the new accept state is the first fragment.
 
 #### The followes Function
-The followes function adds a state to a set and follows all the epsilon arrows.
+The "followes" function adds a state to a set and follows all the epsilon arrows.
 
 #### The match Function
 The match function is used to check if the regular expression and the string match. It will return True if and only if the regular expression fully matches the string s. It returns false otherwise.
@@ -123,3 +129,5 @@ https://en.wikipedia.org/wiki/Thompson%27s_construction <br/>
 https://www.geeksforgeeks.org/write-regular-expressions/ <br/>
 https://brilliant.org/wiki/shunting-yard-algorithm/ <br/>
 http://www.emerson.emory.edu/services/editors/ne/Regular_Expressions.html <br/>
+https://en.wikipedia.org/wiki/Infix_notation <br/>
+https://en.wikipedia.org/wiki/Reverse_Polish_notation <br/>

@@ -17,11 +17,9 @@ def menu():
             inputString = input()
 
             if thompsons.match(inputRegex, inputString) == True:
-                print("MATCH, the regular expression,", inputRegex,
-                      ", and the string,", inputString, ", entered are a match.")
+                print("MATCH, the regular expression,", inputRegex, ", and the string,", inputString, ", entered are a match.")
             else:
-                print("NO MATCH, the regular expression,", inputRegex,
-                      ", and the string,", inputString, ", entered do not match.")
+                print("NO MATCH, the regular expression,", inputRegex, ", and the string,", inputString, ", entered do not match.")
 
 
 menu()
